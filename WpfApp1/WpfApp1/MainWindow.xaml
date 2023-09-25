@@ -1,0 +1,119 @@
+﻿<Window x:Class="WpfApp1.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:Flags="clr-namespace:FamFamFam.Flags.Wpf;assembly=FamFamFam.Flags.Wpf"
+        xmlns:local="clr-namespace:WpfApp1"
+        mc:Ignorable="d"
+        Style="{DynamicResource CustomWindowStyle}"
+        Title="" Height="700" Width="450">
+
+    <Window.Resources>
+        <Flags:CountryIdToFlagImageSourceConverter x:Key="CountryIdToFlagImageSourceConverter" />
+    </Window.Resources>
+
+    <Grid Background="#171717">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="90"/>
+            <RowDefinition Height="90"/>
+            <RowDefinition Height="60"/>
+            <RowDefinition/>
+            <RowDefinition Height="40" />
+        </Grid.RowDefinitions>
+        
+        <!--Header--> 
+        
+        <!--Title--> 
+        <TextBlock Text="IP TRACKING" Foreground="#e8e8e8" HorizontalAlignment="Center" Grid.Row="0"
+                       VerticalAlignment="Center" FontSize="45" FontFamily="Verdana" FontWeight="Bold"/>
+        
+         <!--Content--> 
+        
+        <!--Text Field-->
+        <Grid Grid.Row="1" HorizontalAlignment="Center">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="60"/>
+                <ColumnDefinition Width="10"/>
+                <ColumnDefinition Width="60"/>
+                <ColumnDefinition Width="20"/>
+                <ColumnDefinition Width="60"/>
+                <ColumnDefinition Width="20"/>
+                <ColumnDefinition Width="60"/>
+                <ColumnDefinition Width="20"/>
+                <ColumnDefinition Width="60"/>
+                <ColumnDefinition Width="10"/>
+                <ColumnDefinition Width="60"/>
+            </Grid.ColumnDefinitions>
+
+            <Border BorderThickness="0" CornerRadius="8" Grid.Column="2"
+                        Width="50" Height="38" VerticalAlignment="Center" Focusable="True" >
+                <TextBox FontSize="27" Name="TB1" PreviewTextInput="TextBoxThreeDigits_PreviewTextInput"/>
+            </Border>
+
+            <Border BorderThickness="0" CornerRadius="8" Grid.Column="4"
+                        Width="50" Height="38" VerticalAlignment="Center" Focusable="True" >
+                <TextBox FontSize="27" Name="TB2" PreviewTextInput="TextBoxThreeDigits_PreviewTextInput"/>
+            </Border>
+
+            <Border BorderThickness="0" CornerRadius="8" Grid.Column="6"
+                        Width="50" Height="38" VerticalAlignment="Center" Focusable="True" >
+                <TextBox FontSize="27" Name="TB3" PreviewTextInput="TextBoxThreeDigits_PreviewTextInput"/>
+            </Border>
+
+            <Border BorderThickness="0" CornerRadius="8" Grid.Column="8"
+                        Width="50" Height="38" VerticalAlignment="Center" Focusable="True" >
+                <TextBox FontSize="27" Name="TB4" PreviewTextInput="TextBoxThreeDigits_PreviewTextInput"/>
+            </Border>
+
+            <TextBlock Grid.Column="3" Foreground="#e8e8e8" FontSize="27" VerticalAlignment="Center" HorizontalAlignment="Center">.</TextBlock>
+
+            <TextBlock Grid.Column="5" Foreground="#e8e8e8" FontSize="27" VerticalAlignment="Center" HorizontalAlignment="Center">.</TextBlock>
+
+            <TextBlock Grid.Column="7" Foreground="#e8e8e8" FontSize="27" VerticalAlignment="Center" HorizontalAlignment="Center">.</TextBlock>
+
+            
+        </Grid>
+
+        <!--Search Button-->
+        <Grid Grid.Row="2">
+
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+
+            <Button BorderThickness="0" Grid.Column="0"
+                Height="34" Width="110" VerticalAlignment="Top" HorizontalAlignment="Right" Margin="0 15 30 0" Focusable="True"
+                    Click="by_ip">
+                <TextBlock Text="SEARCH IP" FontSize="20"
+                   VerticalAlignment="Center" Foreground="#e8e8e8" TextAlignment="Center"/>
+            </Button>
+
+            <Button BorderThickness="0" Grid.Column="1"
+                Height="34" Width="110" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="30 15 0 0" Focusable="True"
+                    Click="my_ip">
+                <TextBlock Text="MY IP" FontSize="20" 
+                   VerticalAlignment="Center" Foreground="#e8e8e8" TextAlignment="Center"/>
+            </Button>
+
+        </Grid>
+        
+        <!--IP info-->
+        <RichTextBox Grid.Row="3" Margin="10" Background="#101010" Name="richBox" IsReadOnly="True" BorderBrush="#202020" Padding="10" Foreground="#e8e8e8"
+                     FontSize="20" >
+            <FlowDocument>
+                <Paragraph LineHeight="2" Name="textRichBox"/>
+            </FlowDocument>
+        </RichTextBox>
+        <Image  Width="24" Height="24" Grid.Row="3" Margin="200 141 0 0" VerticalAlignment="Top" HorizontalAlignment="Left" Source="{Binding CountryCode, Converter={StaticResource CountryIdToFlagImageSourceConverter}}"
+       RenderOptions.BitmapScalingMode="HighQuality" />
+        
+        <!--Footer--> 
+        
+             <!--About us--> 
+            <TextBlock Text="Created with ❤️ by Blaid" Grid.Row="4" Foreground="#e12121" 
+                       FontSize="15" Margin="10 0 0 0" VerticalAlignment="Center"/>
+
+    </Grid>
+</Window>
